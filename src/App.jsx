@@ -118,7 +118,7 @@ function App() {
       <div className=' fixed flex flex-wrap justify-center bottom-12 inset-x-0 px-2'>
            <a href="https://github.com/asifali777/react-password-generator" target="_blank">Visit Repo</a>
       </div>
-        <div className={`mb-4 text-center text-lg font-semibold text-white ${
+        <div className={`mb-4 text-center text-lg font-semibold ${
         passwordStrength === "Strong" ? "text-green-600" 
         : passwordStrength === "Medium" ? "text-yellow-500" 
         : passwordStrength === "Ultra Strong" ? "text-violet-900"
