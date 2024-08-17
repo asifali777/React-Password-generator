@@ -101,6 +101,9 @@ function App() {
         </button>
   
       </div>
+      <div className=' fixed flex flex-wrap justify-center bottom-12 inset-x-0 px-2'>
+           <a href="https://github.com/asifali777/react-password-generator" target="_blank">Visit Repo</a>
+      </div>
     </div>
   );
 }
