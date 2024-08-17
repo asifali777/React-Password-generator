@@ -5,6 +5,8 @@ function App() {
   const [numberAllow, setNumberAllow] = useState(false);
   const [specialCharacter, setSpecialCharacter] = useState(false);
   const [Password, setPassword] = useState("");
+  const [passwordStrength, setPasswordStrength] = useState("");
+
 
   const passwordRef = useRef(null);
   const copyPasswordToClipboard = useCallback(() => {
@@ -26,11 +28,23 @@ function App() {
       pass += str.charAt(char);
     }
     setPassword(pass);
+    setPasswordStrength(PasswordStrength(pass))
   }, [length, numberAllow, specialCharacter, setPassword]);
 
   useEffect(() => {
     passwordGenerator();
   }, [length, numberAllow, specialCharacter, passwordGenerator]);
+
+  const PasswordStrength = (pass)=>{
+
+    if (pass.length <= 6) return "weak"
+    if (pass.length <= 12) return "Medium"
+    if (pass.length <= 24) return "Strong"
+    if (pass.length > 24) return "Ultra Strong"
+
+  }
+  
+
 
   return (
     <div className=" p-8 w-full h-screen bg-slate-100">
@@ -104,6 +118,13 @@ function App() {
       <div className=' fixed flex flex-wrap justify-center bottom-12 inset-x-0 px-2'>
            <a href="https://github.com/asifali777/react-password-generator" target="_blank">Visit Repo</a>
       </div>
+        <div className={`mb-4 text-center text-lg font-semibold text-white ${
+        passwordStrength === "Strong" ? "text-green-600" 
+        : passwordStrength === "Medium" ? "text-yellow-500" 
+        : passwordStrength === "Ultra Strong" ? "text-violet-900"
+        :"text-red-500" }`}>
+          Strength: {passwordStrength}
+        </div>
     </div>
   );
 }
